@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Dashboard prakiraan suhu per jam untuk Jakarta menggunakan Open-Meteo API."
+    />
+    <meta name="theme-color" content="#0b4f63" />
+    <title>Prakiraan Suhu Jakarta</title>
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230b4f63'/%3E%3Cpath d='M12 5v8.2a3 3 0 1 0 2 0V5a1 1 0 0 0-2 0Z' fill='none' stroke='white' stroke-width='1.6'/%3E%3C/svg%3E"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-inner">
+        <div class="brand">
+          <span class="brand-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20">
+              <path
+                d="M12 5v8.2a3 3 0 1 0 2 0V5a1 1 0 0 0-2 0Z"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          <span class="brand-name">Cuaca Jakarta</span>
+        </div>
+        <span class="badge">Data: Open-Meteo API</span>
+      </div>
+    </nav>
+
+    <div class="page">
+      <section class="hero" aria-labelledby="judul-hero">
+        <div class="hero-main">
+          <p class="hero-eyebrow" id="judul-hero">Perkiraan suhu saat ini</p>
+          <p class="hero-temp" id="hero-temp">--</p>
+          <p class="hero-time" id="hero-time">Memuat data...</p>
+        </div>
+        <dl class="hero-meta">
+          <div>
+            <dt>Lokasi</dt>
+            <dd>Jakarta, Indonesia</dd>
+          </div>
+          <div>
+            <dt>Koordinat</dt>
+            <dd>-6.2 / 106.8</dd>
+          </div>
+          <div>
+            <dt>Diperbarui</dt>
+            <dd id="hero-updated">-</dd>
+          </div>
+        </dl>
+      </section>
+
+      <main>
+        <section class="card" aria-labelledby="judul-tren">
+          <div class="card-head">
+            <div>
+              <h2 id="judul-tren">Tren suhu</h2>
+              <p class="muted" id="rentang"></p>
+            </div>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-label">Tertinggi</span>
+              <span class="stat-value" id="stat-max">-</span>
+              <span class="stat-sub" id="stat-max-time"></span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Terendah</span>
+              <span class="stat-value" id="stat-min">-</span>
+              <span class="stat-sub" id="stat-min-time"></span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Rata-rata</span>
+              <span class="stat-value" id="stat-avg">-</span>
+              <span class="stat-sub" id="stat-count"></span>
+            </div>
+          </div>
+
+          <div
+            id="chart"
+            class="chart"
+            role="img"
+            aria-label="Grafik garis suhu per jam"
+          ></div>
+        </section>
+
+        <section class="card" aria-labelledby="judul-tabel">
+          <div class="card-head">
+            <div>
+              <h2 id="judul-tabel">Data per jam</h2>
+              <p class="muted">Kolom: time dan temperature_2m</p>
+            </div>
+            <button id="toggle" class="btn" type="button" hidden>
+              Tampilkan semua
+            </button>
+          </div>
+
+          <div id="notice" class="notice" hidden></div>
+
+          <div class="table-wrap" id="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Waktu (time)</th>
+                  <th scope="col">Suhu (temperature_2m)</th>
+                </tr>
+              </thead>
+              <tbody id="tabel-body">
+                <tr>
+                  <td colspan="2">Memuat data...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+
+      <footer class="foot">
+        <span
+          >Sumber data:
+          <a href="https://open-meteo.com/" target="_blank" rel="noopener"
+            >Open-Meteo</a
+          >. Waktu pada tabel dalam GMT, WIB = GMT + 7.</span
+        >
+        <span>Dibuat oleh MUHAMAD FIKRI (052617539)</span>
+      </footer>
+    </div>
+
+    <script src="js/script.js" defer></script>
+  </body>
+</html>
